@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIXMOR Systems — Brand Identity</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0D2137;
+    --blue:    #1B3A5C;
+    --blue-l:  #2A5580;
+    --orange:  #E8670A;
+    --orange-l:#F58C3A;
+    --white:   #F4F1EC;
+    --grey:    #C8C4BC;
+    --muted:   #6B7280;
+    --black:   #080F18;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--black); color:var(--white); font-family:'Barlow',sans-serif; overflow-x:hidden; }
+
+  .grid-bg {
+    position:fixed; inset:0;
+    background-image:
+      linear-gradient(rgba(42,85,128,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,85,128,0.05) 1px, transparent 1px);
+    background-size:48px 48px;
+    pointer-events:none; z-index:0;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height:100vh; position:relative; z-index:1;
+    background:var(--navy);
+    display:flex; flex-direction:column;
+    justify-content:center; align-items:center;
+    padding:80px 40px; text-align:center;
+    overflow:hidden;
+  }
+  .cover::before {
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 15% 85%, rgba(232,103,10,0.07) 0%, transparent 55%),
+      radial-gradient(circle at 85% 15%, rgba(42,85,128,0.25) 0%, transparent 55%);
+    pointer-events:none;
+  }
+
+  /* ── FULL LOGO MARK (original node mark) ── */
+  .logo-lockup {
+    display:flex; align-items:center; gap:32px;
+    margin-bottom:56px; position:relative; z-index:1;
+  }
+  .mark-wrap { position:relative; }
+
+  /* Wordmark */
+  .wordmark { display:flex; flex-direction:column; }
+  .wordmark-name {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:96px; letter-spacing:0.1em;
+    color:var(--white); line-height:1;
+  }
+  .wordmark-rule {
+    width:100%; height:2px; background:var(--orange); margin:6px 0;
+  }
+  .wordmark-sub {
+    font-family:'DM Mono',monospace; font-size:14px;
+    letter-spacing:0.45em; color:var(--grey); text-transform:uppercase;
+  }
+
+  /* Divider */
+  .logo-divider {
+    width:1px; height:140px; background:rgba(42,85,128,0.5);
+    position:relative;
+  }
+  .logo-divider::before, .logo-divider::after {
+    content:''; position:absolute;
+    left:50%; transform:translateX(-50%);
+    width:5px; height:5px; border-radius:50%;
+    background:var(--blue-l);
+  }
+  .logo-divider::before { top:0; }
+  .logo-divider::after { bottom:0; }
+
+  .cover-label {
+    position:relative; z-index:1;
+    font-family:'DM Mono',monospace; font-size:11px;
+    letter-spacing:0.3em; color:var(--muted); text-transform:uppercase;
+  }
+  .cover-doc {
+    position:relative; z-index:1;
+    font-family:'DM Mono',monospace; font-size:10px;
+    letter-spacing:0.2em; color:rgba(107,114,128,0.5);
+    margin-top:16px;
+  }
+
+  /* ── SECTIONS ── */
+  .section { position:relative; z-index:1; }
+  .section-inner { max-width:1000px; margin:0 auto; padding:80px 40px; }
+
+  .section-num {
+    font-family:'DM Mono',monospace; font-size:10px;
+    letter-spacing:0.3em; color:var(--orange); text-transform:uppercase;
+    margin-bottom:8px; display:flex; align-items:center; gap:10px;
+  }
+  .section-num::before { content:'//'; color:var(--blue-l); }
+
+  .section-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(36px,5vw,60px);
+    letter-spacing:0.04em; color:var(--white); margin-bottom:48px;
+    line-height:1;
+  }
+  .section-title .accent { color:var(--orange); }
+
+  .section-divider {
+    border:none; border-top:1px solid rgba(42,85,128,0.25);
+  }
+
+  /* ── PALETTE ── */
+  .palette-grid {
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+    margin-bottom:40px;
+  }
+  .swatch { display:flex; flex-direction:column; gap:10px; }
+  .swatch-color {
+    height:96px; border-radius:2px;
+    border:1px solid rgba(42,85,128,0.2);
+  }
+  .swatch-name {
+    font-family:'DM Mono',monospace; font-size:9px;
+    letter-spacing:0.2em; color:var(--white); text-transform:uppercase;
+  }
+  .swatch-hex {
+    font-family:'DM Mono',monospace; font-size:11px;
+    color:var(--orange); letter-spacing:0.1em;
+  }
+  .swatch-role {
+    font-size:12px; font-weight:300; color:var(--muted); line-height:1.5;
+  }
+
+  /* ── TYPOGRAPHY ── */
+  .type-specimen { margin-bottom:32px; }
+  .type-label {
+    font-family:'DM Mono',monospace; font-size:9px;
+    letter-spacing:0.3em; color:var(--muted); text-transform:uppercase;
+    margin-bottom:16px; display:flex; align-items:center; gap:10px;
+  }
+  .type-label::after {
+    content:''; flex:1; height:1px; background:rgba(42,85,128,0.2);
+  }
+  .type-display {
+    font-family:'Bebas Neue',sans-serif; font-size:72px;
+    letter-spacing:0.06em; color:var(--white); line-height:1;
+    margin-bottom:4px;
+  }
+  .type-display .o { color:var(--orange); }
+  .type-mono {
+    font-family:'DM Mono',monospace; font-size:13px;
+    letter-spacing:0.25em; color:var(--grey); margin-bottom:24px;
+  }
+  .type-body-sample {
+    font-family:'Barlow',sans-serif; font-size:16px;
+    font-weight:300; line-height:1.8; color:var(--grey);
+    max-width:600px; border-left:2px solid var(--orange);
+    padding-left:20px; margin-bottom:24px;
+  }
+  .type-meta-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:rgba(42,85,128,0.15);
+  }
+  .type-meta {
+    background:var(--black); padding:24px 20px;
+  }
+  .type-meta-face {
+    font-family:'DM Mono',monospace; font-size:10px;
+    letter-spacing:0.2em; color:var(--orange); margin-bottom:8px;
+    text-transform:uppercase;
+  }
+  .type-meta-name {
+    font-family:'Bebas Neue',sans-serif; font-size:20px;
+    letter-spacing:0.06em; color:var(--white); margin-bottom:6px;
+  }
+  .type-meta-use {
+    font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;
+  }
+
+  /* ── LOGO SECTION ── */
+  .logo-grid {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:2px;
+    background:rgba(42,85,128,0.15);
+  }
+  .logo-variant {
+    background:var(--black); padding:48px 40px;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; gap:20px; min-height:240px;
+  }
+  .logo-variant.on-navy { background:var(--navy); }
+  .logo-variant.on-white { background:var(--white); }
+  .logo-variant.on-orange { background:var(--orange); }
+
+  .logo-variant-label {
+    font-family:'DM Mono',monospace; font-size:9px;
+    letter-spacing:0.25em; text-transform:uppercase;
+    align-self:flex-start;
+  }
+  .on-black .logo-variant-label { color:var(--muted); }
+  .on-navy .logo-variant-label { color:rgba(200,196,188,0.5); }
+  .on-white .logo-variant-label { color:rgba(107,114,128,0.8); }
+  .on-orange .logo-variant-label { color:rgba(13,33,55,0.6); }
+
+  /* Inline logo lockup small */
+  .logo-inline {
+    display:flex; align-items:center; gap:16px;
+  }
+  .logo-inline-words { display:flex; flex-direction:column; }
+  .logo-inline-name {
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.1em; line-height:1;
+  }
+  .logo-inline-rule { height:1.5px; background:var(--orange); margin:3px 0; }
+  .logo-inline-sub {
+    font-family:'DM Mono',monospace; letter-spacing:0.35em;
+  }
+
+  /* ── TAGLINE ── */
+  .tagline-block {
+    border:1px solid rgba(42,85,128,0.3); padding:56px 48px;
+    margin-bottom:24px; position:relative;
+  }
+  .tagline-block::before {
+    content:'"'; position:absolute; top:-24px; left:40px;
+    font-family:'Bebas Neue',sans-serif; font-size:80px;
+    color:rgba(232,103,10,0.15); line-height:1;
+  }
+  .tagline-primary {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(40px,6vw,72px);
+    color:var(--white); letter-spacing:0.04em; line-height:1;
+    margin-bottom:16px;
+  }
+  .tagline-primary .accent { color:var(--orange); }
+  .tagline-note {
+    font-family:'DM Mono',monospace; font-size:10px;
+    letter-spacing:0.2em; color:var(--muted); text-transform:uppercase;
+  }
+  .tagline-alts {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:rgba(42,85,128,0.2);
+  }
+  .tagline-alt {
+    background:var(--black); padding:28px 24px;
+  }
+  .tagline-alt-text {
+    font-family:'Bebas Neue',sans-serif; font-size:22px;
+    letter-spacing:0.06em; color:var(--grey); margin-bottom:8px;
+    line-height:1.1;
+  }
+  .tagline-alt-note {
+    font-size:12px; font-weight:300; color:var(--muted); line-height:1.6;
+  }
+
+  /* ── VOICE ── */
+  .voice-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:2px;
+    background:rgba(42,85,128,0.15);
+  }
+  .voice-col { background:var(--black); padding:40px 36px; }
+  .voice-col-label {
+    font-family:'DM Mono',monospace; font-size:9px;
+    letter-spacing:0.3em; text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .voice-col.is { border-top:2px solid var(--orange); }
+  .voice-col.is .voice-col-label { color:var(--orange); }
+  .voice-col.not { border-top:2px solid var(--blue-l); }
+  .voice-col.not .voice-col-label { color:var(--blue-l); }
+  .voice-item {
+    font-size:14px; font-weight:300; color:var(--grey);
+    padding:10px 0; border-bottom:1px solid rgba(42,85,128,0.15);
+    line-height:1.6; display:flex; gap:12px; align-items:baseline;
+  }
+  .voice-item:last-child { border-bottom:none; }
+  .voice-item::before {
+    font-family:'DM Mono',monospace; font-size:10px;
+    flex-shrink:0; margin-top:2px;
+  }
+  .voice-col.is .voice-item::before { content:'—'; color:var(--orange); }
+  .voice-col.not .voice-item::before { content:'×'; color:var(--muted); }
+
+  /* ── CONTACT / IDENTITY ── */
+  .identity-grid {
+    display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+    background:rgba(42,85,128,0.15);
+  }
+  .identity-item {
+    background:var(--black); padding:32px 28px;
+  }
+  .identity-label {
+    font-family:'DM Mono',monospace; font-size:9px;
+    letter-spacing:0.25em; color:var(--muted); text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .identity-value {
+    font-family:'DM Mono',monospace; font-size:13px;
+    color:var(--white); letter-spacing:0.08em; line-height:1.7;
+  }
+  .identity-value a { color:var(--orange); text-decoration:none; }
+
+  /* ── FOOTER ── */
+  .brand-footer {
+    position:relative; z-index:1;
+    border-top:1px solid rgba(42,85,128,0.25);
+    padding:40px; display:flex;
+    justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:16px;
+  }
+  .brand-footer-name {
+    font-family:'Bebas Neue',sans-serif; font-size:16px;
+    letter-spacing:0.12em; color:var(--white);
+  }
+  .brand-footer-name span { color:var(--orange); }
+  .brand-footer-doc {
+    font-family:'DM Mono',monospace; font-size:9px;
+    letter-spacing:0.2em; color:var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- ── COVER ── -->
+<div class="cover">
+
+  <div class="logo-lockup">
+    <!-- Original node mark: 3 outer grey nodes + dashed lines + solid orange center -->
+    <div class="mark-wrap">
+      <svg width="110" height="110" viewBox="0 0 110 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Dashed connector lines -->
+        <line x1="20" y1="20" x2="55" y2="55" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="90" y1="20" x2="55" y2="55" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <line x1="55" y1="95" x2="55" y2="55" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="4 4"/>
+        <!-- Outer nodes — grey rings with grey fill -->
+        <circle cx="20" cy="20" r="12" fill="none" stroke="#6B7280" stroke-width="2"/>
+        <circle cx="20" cy="20" r="5" fill="#6B7280"/>
+        <circle cx="90" cy="20" r="12" fill="none" stroke="#6B7280" stroke-width="2"/>
+        <circle cx="90" cy="20" r="5" fill="#6B7280"/>
+        <circle cx="55" cy="95" r="12" fill="none" stroke="#6B7280" stroke-width="2"/>
+        <circle cx="55" cy="95" r="5" fill="#6B7280"/>
+        <!-- Center node — solid orange with pulse ring -->
+        <circle cx="55" cy="55" r="18" fill="#E8670A"/>
+        <circle cx="55" cy="55" r="26" fill="none" stroke="rgba(232,103,10,0.25)" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <div class="logo-divider"></div>
+
+    <div class="wordmark">
+      <span class="wordmark-name">VIXMOR</span>
+      <div class="wordmark-rule"></div>
+      <span class="wordmark-sub">Systems</span>
+    </div>
+  </div>
+
+  <div class="cover-label">Brand Identity &amp; Style Guide</div>
+  <div class="cover-doc">vixmor.ca &nbsp;·&nbsp; Kindersley, Saskatchewan &nbsp;·&nbsp; 2026</div>
+</div>
+
+<!-- ── 01 COLOUR ── -->
+<hr class="section-divider">
+<section class="section">
+  <div class="section-inner">
+    <div class="section-num">01</div>
+    <h2 class="section-title">Colour <span class="accent">palette.</span></h2>
+
+    <div class="palette-grid">
+      <div class="swatch">
+        <div class="swatch-color" style="background:#0D2137;"></div>
+        <div class="swatch-name">Deep Navy</div>
+        <div class="swatch-hex">#0D2137</div>
+        <div class="swatch-role">Primary background, section fills</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1B3A5C;"></div>
+        <div class="swatch-name">Instrument Blue</div>
+        <div class="swatch-hex">#1B3A5C</div>
+        <div class="swatch-role">Cards, borders, secondary surfaces</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2A5580;"></div>
+        <div class="swatch-name">Signal Blue</div>
+        <div class="swatch-hex">#2A5580</div>
+        <div class="swatch-role">Hover states, tertiary elements</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#E8670A;"></div>
+        <div class="swatch-name">Flare Orange</div>
+        <div class="swatch-hex">#E8670A</div>
+        <div class="swatch-role">Primary accent, CTAs, logo mark center</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F58C3A;"></div>
+        <div class="swatch-name">Signal Orange</div>
+        <div class="swatch-hex">#F58C3A</div>
+        <div class="swatch-role">Hover state for orange elements</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F4F1EC;"></div>
+        <div class="swatch-name">Prairie White</div>
+        <div class="swatch-hex">#F4F1EC</div>
+        <div class="swatch-role">Primary text, light surface fills</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C8C4BC;"></div>
+        <div class="swatch-name">Dust Grey</div>
+        <div class="swatch-hex">#C8C4BC</div>
+        <div class="swatch-role">Secondary text, muted labels</div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:#080F18; border:1px solid #1B3A5C;"></div>
+        <div class="swatch-name">Midnight</div>
+        <div class="swatch-hex">#080F18</div>
+        <div class="swatch-role">Page background, deepest layer</div>
+      </div>
+    </div>
+
+    <div style="padding:28px 32px; background:var(--navy); border-left:3px solid var(--orange);">
+      <div class="type-label" style="margin-bottom:10px;">Colour story</div>
+      <p style="font-size:15px; font-weight:300; line-height:1.8; color:var(--grey); max-width:640px;">
+        Deep navy and instrument blue come from the control room — serious, trusted, technical. Flare orange is the warning light, the signal that demands attention. Prairie white keeps it readable and grounded. Midnight is the foundation everything sits on.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 02 TYPOGRAPHY ── -->
+<hr class="section-divider">
+<section class="section" style="background:rgba(13,33,55,0.2);">
+  <div class="section-inner">
+    <div class="section-num">02</div>
+    <h2 class="section-title">Type<span class="accent">faces.</span></h2>
+
+    <div class="type-specimen">
+      <div class="type-label">Display — Bebas Neue</div>
+      <div class="type-display">THE STANDARD<br><span class="o">THAT CONNECTS.</span></div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Monospace — DM Mono</div>
+      <div class="type-mono">// vixmor.ca &nbsp;·&nbsp; info@vixmor.ca &nbsp;·&nbsp; SYSTEMS</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Body — Barlow</div>
+      <div class="type-body-sample">
+        Purpose-built applications designed around specific operational needs — shaped to fit the workflow from the ground up. Every build starts with the problem, not a template.
+      </div>
+    </div>
+
+    <div class="type-meta-grid">
+      <div class="type-meta">
+        <div class="type-meta-face">Display</div>
+        <div class="type-meta-name" style="font-family:'Bebas Neue',sans-serif; font-size:24px;">Bebas Neue</div>
+        <div class="type-meta-use">Headlines, logo wordmark, section titles, stat numbers. Always uppercase by nature. Used at 20px and above.</div>
+      </div>
+      <div class="type-meta">
+        <div class="type-meta-face">Monospace</div>
+        <div class="type-meta-name" style="font-family:'DM Mono',monospace; font-size:18px; letter-spacing:0.05em;">DM Mono</div>
+        <div class="type-meta-use">Labels, codes, nav items, section markers, badges, contact details. Letter-spacing 0.2–0.35em. Weights 300–500.</div>
+      </div>
+      <div class="type-meta">
+        <div class="type-meta-face">Body</div>
+        <div class="type-meta-name" style="font-family:'Barlow',sans-serif; font-size:20px; font-weight:400;">Barlow</div>
+        <div class="type-meta-use">Body copy, descriptions, form inputs. Weight 300 for body, 400–600 for UI elements. Line-height 1.7–1.8.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 LOGO MARK ── -->
+<hr class="section-divider">
+<section class="section">
+  <div class="section-inner">
+    <div class="section-num">03</div>
+    <h2 class="section-title">Logo <span class="accent">mark.</span></h2>
+
+    <div style="margin-bottom:32px; padding:24px 28px; background:rgba(13,33,55,0.4); border-left:2px solid rgba(42,85,128,0.4);">
+      <p style="font-size:14px; font-weight:300; line-height:1.8; color:var(--grey); max-width:600px;">
+        Three outer nodes in grey — Morris, Kenneth, and Victor — connected by dashed lines to a solid orange center node representing Brent. The mark reads as a network, a family, and a connection point simultaneously. The orange center is always solid. The outer nodes are always grey.
+      </p>
+    </div>
+
+    <div class="logo-grid">
+
+      <!-- On black -->
+      <div class="logo-variant on-black">
+        <div class="logo-variant-label" style="color:var(--muted);">On midnight</div>
+        <div class="logo-inline">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="12" x2="32" y2="32" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="52" y1="12" x2="32" y2="32" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="32" y1="56" x2="32" y2="32" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <circle cx="12" cy="12" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" fill="#6B7280"/>
+            <circle cx="52" cy="12" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="52" cy="12" r="3" fill="#6B7280"/>
+            <circle cx="32" cy="56" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="32" cy="56" r="3" fill="#6B7280"/>
+            <circle cx="32" cy="32" r="12" fill="#E8670A"/>
+            <circle cx="32" cy="32" r="17" fill="none" stroke="rgba(232,103,10,0.2)" stroke-width="1"/>
+          </svg>
+          <div class="logo-inline-words">
+            <span class="logo-inline-name" style="font-size:38px; color:var(--white);">VIXMOR</span>
+            <div class="logo-inline-rule"></div>
+            <span class="logo-inline-sub" style="font-size:9px; color:var(--grey); letter-spacing:0.4em;">SYSTEMS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- On navy -->
+      <div class="logo-variant on-navy">
+        <div class="logo-variant-label" style="color:rgba(200,196,188,0.5);">On deep navy</div>
+        <div class="logo-inline">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="12" x2="32" y2="32" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="52" y1="12" x2="32" y2="32" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="32" y1="56" x2="32" y2="32" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <circle cx="12" cy="12" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" fill="#6B7280"/>
+            <circle cx="52" cy="12" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="52" cy="12" r="3" fill="#6B7280"/>
+            <circle cx="32" cy="56" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="32" cy="56" r="3" fill="#6B7280"/>
+            <circle cx="32" cy="32" r="12" fill="#E8670A"/>
+            <circle cx="32" cy="32" r="17" fill="none" stroke="rgba(232,103,10,0.2)" stroke-width="1"/>
+          </svg>
+          <div class="logo-inline-words">
+            <span class="logo-inline-name" style="font-size:38px; color:var(--white);">VIXMOR</span>
+            <div class="logo-inline-rule"></div>
+            <span class="logo-inline-sub" style="font-size:9px; color:var(--grey); letter-spacing:0.4em;">SYSTEMS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- On white -->
+      <div class="logo-variant on-white">
+        <div class="logo-variant-label" style="color:rgba(107,114,128,0.8);">On prairie white</div>
+        <div class="logo-inline">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="12" y1="12" x2="32" y2="32" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="52" y1="12" x2="32" y2="32" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <line x1="32" y1="56" x2="32" y2="32" stroke="#9CA3AF" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <circle cx="12" cy="12" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="3" fill="#6B7280"/>
+            <circle cx="52" cy="12" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="52" cy="12" r="3" fill="#6B7280"/>
+            <circle cx="32" cy="56" r="8" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="32" cy="56" r="3" fill="#6B7280"/>
+            <circle cx="32" cy="32" r="12" fill="#E8670A"/>
+          </svg>
+          <div class="logo-inline-words">
+            <span class="logo-inline-name" style="font-size:38px; color:#0D2137;">VIXMOR</span>
+            <div class="logo-inline-rule"></div>
+            <span class="logo-inline-sub" style="font-size:9px; color:#6B7280; letter-spacing:0.4em;">SYSTEMS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mark only -->
+      <div class="logo-variant on-black" style="background:rgba(13,33,55,0.3);">
+        <div class="logo-variant-label" style="color:var(--muted);">Mark only — minimum size 32px</div>
+        <div style="display:flex; gap:32px; align-items:center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="14" y1="14" x2="40" y2="40" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <line x1="66" y1="14" x2="40" y2="40" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <line x1="40" y1="70" x2="40" y2="40" stroke="#4A5568" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <circle cx="14" cy="14" r="10" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="14" cy="14" r="4" fill="#6B7280"/>
+            <circle cx="66" cy="14" r="10" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="66" cy="14" r="4" fill="#6B7280"/>
+            <circle cx="40" cy="70" r="10" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="40" cy="70" r="4" fill="#6B7280"/>
+            <circle cx="40" cy="40" r="15" fill="#E8670A"/>
+            <circle cx="40" cy="40" r="21" fill="none" stroke="rgba(232,103,10,0.2)" stroke-width="1"/>
+          </svg>
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="8" y1="8" x2="22" y2="22" stroke="#4A5568" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="36" y1="8" x2="22" y2="22" stroke="#4A5568" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="22" y1="38" x2="22" y2="22" stroke="#4A5568" stroke-width="1" stroke-dasharray="3 3"/>
+            <circle cx="8" cy="8" r="5" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="8" cy="8" r="2" fill="#6B7280"/>
+            <circle cx="36" cy="8" r="5" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="36" cy="8" r="2" fill="#6B7280"/>
+            <circle cx="22" cy="38" r="5" fill="none" stroke="#6B7280" stroke-width="1.5"/>
+            <circle cx="22" cy="38" r="2" fill="#6B7280"/>
+            <circle cx="22" cy="22" r="7" fill="#E8670A"/>
+            <circle cx="22" cy="22" r="10" fill="none" stroke="rgba(232,103,10,0.25)" stroke-width="1"/>
+          </svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="4" y1="4" x2="12" y2="12" stroke="#4A5568" stroke-width="1" stroke-dasharray="2 2"/>
+            <line x1="20" y1="4" x2="12" y2="12" stroke="#4A5568" stroke-width="1" stroke-dasharray="2 2"/>
+            <line x1="12" y1="22" x2="12" y2="12" stroke="#4A5568" stroke-width="1" stroke-dasharray="2 2"/>
+            <circle cx="4" cy="4" r="3" fill="#6B7280"/>
+            <circle cx="20" cy="4" r="3" fill="#6B7280"/>
+            <circle cx="12" cy="22" r="3" fill="#6B7280"/>
+            <circle cx="12" cy="12" r="5" fill="#E8670A"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 TAGLINE ── -->
+<hr class="section-divider">
+<section class="section" style="background:rgba(13,33,55,0.2);">
+  <div class="section-inner">
+    <div class="section-num">04</div>
+    <h2 class="section-title">Tagline &amp; <span class="accent">voice.</span></h2>
+
+    <div class="tagline-block">
+      <div class="tagline-primary">The Standard <span class="accent">That Connects.</span></div>
+      <div class="tagline-note">Primary tagline — always used in full, never abbreviated</div>
+    </div>
+
+    <div class="tagline-alts" style="margin-bottom:48px;">
+      <div class="tagline-alt">
+        <div class="tagline-alt-text">Shaped by the Work.</div>
+        <div class="tagline-alt-note">Alternate — emphasizes the problem-first approach</div>
+      </div>
+      <div class="tagline-alt">
+        <div class="tagline-alt-text">Built for the Field.</div>
+        <div class="tagline-alt-note">Alternate — for industry and rural contexts</div>
+      </div>
+      <div class="tagline-alt">
+        <div class="tagline-alt-text">Scoped Right. Delivered Straight.</div>
+        <div class="tagline-alt-note">Alternate — for project and proposal contexts</div>
+      </div>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-col is">
+        <div class="voice-col-label">Voice is</div>
+        <div class="voice-item">Direct and confident — says what something does without overselling it</div>
+        <div class="voice-item">Third person — VIXMOR Systems builds, delivers, deploys</div>
+        <div class="voice-item">Solution-forward — describes what the system enables, not what it replaces</div>
+        <div class="voice-item">Specific — names real places, real operations, real outcomes</div>
+        <div class="voice-item">Spare — no adjective stacking, no filler words</div>
+      </div>
+      <div class="voice-col not">
+        <div class="voice-col-label">Voice is not</div>
+        <div class="voice-item">First or second person — never "we," "our," "you," or "your"</div>
+        <div class="voice-item">Negative comparison — never names competitors or legacy methods</div>
+        <div class="voice-item">Hyperbolic — no "best," "ultimate," "revolutionary," "game-changing"</div>
+        <div class="voice-item">Corporate filler — no "solutions," "synergy," "leveraging," "ecosystem"</div>
+        <div class="voice-item">Emoji — SVG icons only throughout all touchpoints</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 05 IDENTITY ── -->
+<hr class="section-divider">
+<section class="section">
+  <div class="section-inner">
+    <div class="section-num">05</div>
+    <h2 class="section-title">Identity <span class="accent">details.</span></h2>
+
+    <div class="identity-grid">
+      <div class="identity-item">
+        <div class="identity-label">Legal Name</div>
+        <div class="identity-value">VIXMOR Systems</div>
+      </div>
+      <div class="identity-item">
+        <div class="identity-label">Name Format</div>
+        <div class="identity-value">VIXMOR always in full capitals.<br>Systems in title case.</div>
+      </div>
+      <div class="identity-item">
+        <div class="identity-label">Domain</div>
+        <div class="identity-value"><a href="https://vixmor.ca">vixmor.ca</a></div>
+      </div>
+      <div class="identity-item">
+        <div class="identity-label">Email</div>
+        <div class="identity-value"><a href="mailto:info@vixmor.ca">info@vixmor.ca</a></div>
+      </div>
+      <div class="identity-item">
+        <div class="identity-label">Location</div>
+        <div class="identity-value">Kindersley, Saskatchewan<br>Canada</div>
+      </div>
+      <div class="identity-item">
+        <div class="identity-label">Hosting Stack</div>
+        <div class="identity-value">Cloudflare Pages<br>Workers · D1 · Static HTML</div>
+      </div>
+    </div>
+
+    <div style="margin-top:2px;">
+      <div class="identity-item" style="background:rgba(13,33,55,0.4); border:1px solid rgba(42,85,128,0.2); padding:32px 28px;">
+        <div class="identity-label">Name origin</div>
+        <div style="font-size:14px; font-weight:300; line-height:1.8; color:var(--grey); max-width:640px;">
+          VIXMOR is a compound of Victor and Morris — the two grandfathers. Kenneth, the father, and Brent, the founder, complete the four generations represented in the node mark. The name is owned, distinctive, and carries no prior meaning — a clean slate built on family.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<div class="brand-footer">
+  <div class="brand-footer-name">VIXMOR <span>SYSTEMS</span></div>
+  <div class="brand-footer-doc">Brand Identity · 2026 · vixmor.ca</div>
+</div>
+
+</body>
+</html>
